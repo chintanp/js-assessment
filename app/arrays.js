@@ -79,34 +79,96 @@ exports.arraysAnswers = {
   },
 
   prepend : function(arr, item) {
-	  var newArray = [item];
+	  var newArray = [];
+	  newArray.push(item);
+	  var len = arr.length;
+	  for (var i = 0; i < len; i++) {
+		  newArray.push(arr[i]);
+	  }
+	  return newArray;
   },
 
   curtail : function(arr) {
-
+	  arr.splice(0,1);
+	  return arr;
   },
 
   concat : function(arr1, arr2) {
-
+	  var newArray = [];
+	  var len1 = arr1.length;
+	  var len2 = arr2.length;
+	  
+	  for (var i = 0; i < len1; i++) {
+		  newArray.push(arr1[i]);
+	  }
+	  for (var j = 0; j < len2; j++) {
+		  newArray.push(arr2[j]);
+	  }
+	  return newArray;
   },
 
   insert : function(arr, item, index) {
-
+	  var newArray = [];
+	  var len = arr.length;
+	  
+	  for (var i = 0; i < len; i++) {
+		  if (i === index) {
+			  newArray.push(item);
+			  newArray.push(arr[i]);
+		  } else {
+			  newArray.push(arr[i]);
+		  }
+	  }
+	  return newArray;
   },
 
   count : function(arr, item) {
-
+	  var count = 0; 
+	  var len = arr.length;
+	  
+	  for (var i = 0; i < len; i++) {
+		  if (arr[i] === item) {
+			  count++;
+		  }
+	  }
+	  return count;
   },
 
   duplicates : function(arr) {
-
+	  var dupes = [];
+	  var len = arr.length;
+	  
+	  for (var i = 1; i < len; i++) {
+		  for (var j = 0; j < i; j++) {
+			  if (arr[j] === arr[i]) {
+				  if(this.indexOf(dupes, arr[i]) === -1) {
+					  dupes.push(arr[i]);
+				  }
+			  }
+		  }
+	  }
+	  return dupes;
   },
 
   square : function(arr) {
-
+	  var newArray = [];
+	  var len = arr.length;
+	  
+	  for (var i = 0; i < len; i++) {
+		  newArray.push(arr[i] * arr[i]);
+	  }
+	  return newArray;
   },
 
   findAllOccurrences : function(arr, target) {
-
+	  var indices = [];
+	  var len = arr.length;
+	  
+	  for (var i = 0; i < len; i++) {
+		  if (arr[i] === target) {
+			  indices.push(i);
+		  }
+	  }
+	  return indices;
   }
 };
